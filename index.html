@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Learning: Transform ChatGPT from Threat to Teaching Tool</title>
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --warning-color: #fbbc04;
+            --text-color: #202124;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: #dadce0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1557b0 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .nav {
+            background-color: var(--card-bg);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav a:hover, .nav a.active {
+            color: var(--primary-color);
+            background-color: rgba(26, 115, 232, 0.08);
+        }
+
+        .nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Module Sections */
+        .module {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .module.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: 400;
+        }
+
+        .card h3 {
+            color: var(--text-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        /* Video Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .video-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        .video-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Learning Objectives */
+        .objectives {
+            background-color: #e8f0fe;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            margin: 2rem 0;
+        }
+
+        .objectives h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .objectives ul {
+            margin-left: 1.5rem;
+        }
+
+        .objectives li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Interactive Elements */
+        .activity {
+            background-color: #f8f9fa;
+            border: 2px dashed var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .activity h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .activity h4 i {
+            margin-right: 0.5rem;
+        }
+
+        /* Quiz Styles */
+        .quiz {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin: 2rem 0;
+        }
+
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question p {
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-options label {
+            display: block;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            background-color: #f8f9fa;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-options label:hover {
+            background-color: #e8f0fe;
+            border-color: var(--primary-color);
+        }
+
+        .quiz-options input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+
+        .quiz-submit {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .quiz-submit:hover {
+            background-color: #1557b0;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .quiz-feedback.correct {
+            background-color: #e6f4ea;
+            border: 1px solid var(--secondary-color);
+            color: #1e8e3e;
+        }
+
+        .quiz-feedback.incorrect {
+            background-color: #fce8e6;
+            border: 1px solid var(--accent-color);
+            color: #d33b2c;
+        }
+
+        /* Resources */
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .resource-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .resource-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .resource-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .resource-card p {
+            color: #5f6368;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #2d8e47;
+        }
+
+        /* Progress Tracker */
+        .progress-tracker {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #5f6368;
+            font-size: 0.9rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: #1557b0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #2d8e47;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .nav ul {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav a {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Rubric Tables */
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            overflow-x: auto;
+            display: block;
+        }
+
+        .rubric-table th,
+        .rubric-table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        .rubric-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+
+        .rubric-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .rubric-table td:first-child {
+            font-weight: 500;
+            background-color: #e8f0fe;
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav, .video-container, .quiz-submit {
+                display: none;
+            }
+            
+            .module {
+                display: block !important;
+                page-break-after: always;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>AI-Powered Learning</h1>
+        <p>Transform ChatGPT from Threat to Teaching Tool</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <ul>
+                <li><a href="#overview" class="nav-link active" onclick="showModule('overview')">Overview</a></li>
+                <li><a href="#module1" class="nav-link" onclick="showModule('module1')">Understanding AI</a></li>
+                <li><a href="#module2" class="nav-link" onclick="showModule('module2')">Detection Strategies</a></li>
+                <li><a href="#module3" class="nav-link" onclick="showModule('module3')">Teaching WITH AI</a></li>
+                <li><a href="#module4" class="nav-link" onclick="showModule('module4')">Critical Thinking</a></li>
+                <li><a href="#module5" class="nav-link" onclick="showModule('module5')">Implementation</a></li>
+                <li><a href="#resources" class="nav-link" onclick="showModule('resources')">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Progress Tracker -->
+        <div class="progress-tracker">
+            <h3>Your Progress</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-bar"></div>
+            </div>
+            <p class="progress-text"><span id="progress-text">0</span>% Complete</p>
+        </div>
+
+        <!-- Overview Module -->
+        <div id="overview" class="module active">
+            <div class="card">
+                <h2>Welcome to AI-Powered Learning</h2>
+                <p>89% of students are already using ChatGPT for schoolwork. The question isn't whether to allow it – it's how to harness its power for deeper learning.</p>
+                
+                <div class="video-container">
+                    <div class="video-placeholder" onclick="playVideo('intro')">
+                        <div>
+                            <i class="fas fa-play-circle"></i>
+                            <p>Watch: The ChatGPT Reality Check<br>(5 minutes)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="objectives">
+                    <h4><i class="fas fa-bullseye"></i> What You'll Learn</h4>
+                    <ul>
+                        <li>Understand how ChatGPT actually works (and its limitations)</li>
+                        <li>Detect AI use effectively without relying on faulty software</li>
+                        <li>Design assignments that leverage AI for deeper learning</li>
+                        <li>Teach critical AI literacy skills your students need</li>
+                        <li>Create a 30-day implementation plan for your classroom</li>
+                    </ul>
+                </div>
+
+                <div class="activity">
+                    <h4><i class="fas fa-tasks"></i> Pre-Training Self-Assessment</h4>
+                    <p>Before we begin, let's assess your current knowledge and attitudes about AI in education.</p>
+                    <button class="btn" onclick="showQuiz('pre-assessment')">Take Assessment</button>
+                    <button class="btn btn-secondary" onclick="window.open('chatgpt-reality-check.html', '_blank')">Take Reality Check</button>
+                </div>
+
+                <h3>The Paradigm Shift</h3>
+                <p>Remember when calculators were going to "ruin" math education? Or when Wikipedia would "end" research skills? Every transformative tool faces resistance before integration.</p>
+                
+                <p>ChatGPT is not the enemy of education – it's the newest tool in our teaching toolkit. This training will show you how to use it to enhance, not replace, student thinking.</p>
+
+                <div class="card" style="background-color: #f0f4f8; margin-top: 2rem;">
+                    <h3>🌟 Real Schools, Real Results</h3>
+                    <p>This training is based on successful implementations across the country:</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                            <h4>Jefferson Middle School</h4>
+                            <p><strong>87%</strong> improvement in writing skills</p>
+                            <p style="font-size: 0.9rem; color: #666;">From AI panic to integration success</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--secondary-color);">
+                            <h4>Oak Valley High School</h4>
+                            <p><strong>15 hours/week</strong> saved on detection</p>
+                            <p style="font-size: 0.9rem; color: #666;">Process-based assessment model</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--warning-color);">
+                            <h4>Washington Middle Science</h4>
+                            <p><strong>2x</strong> state test improvement</p>
+                            <p style="font-size: 0.9rem; color: #666;">AI as lab partner innovation</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                            <h4>Lincoln High AP History</h4>
+                            <p><strong>94%</strong> AP exam pass rate</p>
+                            <p style="font-size: 0.9rem; color: #666;">Critical thinking with AI debates</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border-left: 4px solid #9c27b0;">
+                            <h4>Riverside Elementary</h4>
+                            <p><strong>91%</strong> parent approval</p>
+                            <p style="font-size: 0.9rem; color: #666;">K-5 school-wide implementation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-primary" onclick="showModule('module1')">Begin Module 1 <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 1: Understanding AI -->
+        <div id="module1" class="module">
+            <div class="card">
+                <h2>Module 1: Understanding the AI Revolution</h2>
+                
+                <div class="video-container">
+                    <div class="video-placeholder" onclick="playVideo('module1')">
+                        <div>
+                            <i class="fas fa-play-circle"></i>
+                            <p>Watch: Understanding AI in Education<br>(30 minutes)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>What is ChatGPT?</h3>
+                <p>Think of ChatGPT as the world's most sophisticated autocomplete. It predicts what words should come next based on patterns in billions of documents.</p>
+
+                <div class="activity">
+                    <h4><i class="fas fa-laptop-code"></i> Try It Yourself</h4>
+                    <p>Open ChatGPT and try these prompts to understand its capabilities and limitations:</p>
+                    <ol>
+                        <li>"Explain photosynthesis for a 5th grader"</li>
+                        <li>"What happened at my school assembly last week?"</li>
+                        <li>"Write a story about being in middle school"</li>
+                    </ol>
+                    <p>Notice: It excels at general knowledge, fails at specific/recent events, and creates generic rather than authentic voices.</p>
+                </div>
+
+                <h3>How Students Really Use AI</h3>
+                <div class="card" style="background-color: #f8f9fa;">
+                    <h4>The Data:</h4>
+                    <ul>
+                        <li><strong>89%</strong> of students have used AI for schoolwork</li>
+                        <li><strong>65%</strong> use it weekly</li>
+                        <li><strong>78%</strong> want to learn to use it "properly"</li>
+                        <li>Top reason: <strong>"To understand better"</strong> (not "to cheat")</li>
+                    </ul>
+                </div>
+
+                <div class="quiz">
+                    <h4>Knowledge Check</h4>
+                    <div class="quiz-question">
+                        <p>What is ChatGPT's biggest limitation for classroom use?</p>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q1" value="a"> It's too expensive</label>
+                            <label><input type="radio" name="q1" value="b"> It can't access current or specific information</label>
+                            <label><input type="radio" name="q1" value="c"> It only works in English</label>
+                            <label><input type="radio" name="q1" value="d"> It requires advanced technical skills</label>
+                        </div>
+                    </div>
+                    <button class="quiz-submit" onclick="checkAnswer('q1', 'b', 'module1')">Submit Answer</button>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <h3>From Threat to Tool: Real Examples</h3>
+                <div class="resources">
+                    <div class="resource-card">
+                        <i class="fas fa-user-graduate"></i>
+                        <h4>Case Study: Marcus</h4>
+                        <p>Used AI to learn essay structure, then won 2nd place in contest with his own writing</p>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h4>Ms. Rodriguez</h4>
+                        <p>Transformed her English class with AI brainstorming partnerships</p>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Results</h4>
+                        <p>40% increase in student engagement after AI integration</p>
+                    </div>
+                </div>
+
+                <div class="card" style="background-color: #e6f4ea; margin-top: 2rem;">
+                    <h3>📚 Case Study: Jefferson Middle School</h3>
+                    <h4>The Challenge:</h4>
+                    <p>In September 2024, Jefferson Middle School faced a crisis: 73% of essays showed signs of AI use, teachers were demoralized, and a "catch and punish" approach was failing.</p>
+                    
+                    <h4>The Intervention:</h4>
+                    <ul>
+                        <li><strong>Week 1:</strong> Teacher training on AI literacy (this curriculum)</li>
+                        <li><strong>Week 2:</strong> Shifted from detection to integration</li>
+                        <li><strong>Week 3:</strong> Students taught AI as a tool, not replacement</li>
+                        <li><strong>Week 4:</strong> New assessment methods implemented</li>
+                    </ul>
+                    
+                    <h4>The Results (After 3 Months):</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                        <div style="background: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <h2 style="color: var(--secondary-color); margin: 0;">87%</h2>
+                            <p>Students showing improved writing skills</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <h2 style="color: var(--secondary-color); margin: 0;">92%</h2>
+                            <p>Teachers report reduced stress about AI</p>
+                        </div>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <h2 style="color: var(--secondary-color); margin: 0;">0</h2>
+                            <p>Academic integrity violations</p>
+                        </div>
+                    </div>
+                    
+                    <blockquote style="border-left: 4px solid var(--primary-color); padding-left: 1rem; margin: 1rem 0; font-style: italic;">
+                        "Instead of playing 'gotcha,' we're now teaching real skills. Students are more engaged than ever, and they're actually becoming better writers by learning to collaborate with AI rather than depend on it."
+                        <br><strong>- Principal Janet Morrison</strong>
+                    </blockquote>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-secondary" onclick="showModule('overview')"><i class="fas fa-arrow-left"></i> Back</button>
+                    <button class="btn btn-primary" onclick="showModule('module2')">Continue to Module 2 <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 2: Detection Strategies -->
+        <div id="module2" class="module">
+            <div class="card">
+                <h2>Module 2: Detection Strategies That Actually Work</h2>
+                
+                <div class="video-container">
+                    <div class="video-placeholder" onclick="playVideo('module2')">
+                        <div>
+                            <i class="fas fa-play-circle"></i>
+                            <p>Watch: Beyond Detection Software<br>(45 minutes)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Why Detection Software Fails</h3>
+                <div class="activity">
+                    <h4><i class="fas fa-exclamation-triangle"></i> The Detection Myth</h4>
+                    <p>AI detectors are notoriously unreliable. They often flag:</p>
+                    <ul>
+                        <li>Classic literature as "AI-generated"</li>
+                        <li>ESL student writing as "likely AI"</li>
+                        <li>Well-structured student work as "suspicious"</li>
+                    </ul>
+                    <p>Meanwhile, students can easily evade detection with minor edits.</p>
+                </div>
+
+                <h3>Human Detection Patterns</h3>
+                <p>Learn to spot these "AI Fingerprints" in student writing:</p>
+                
+                <table class="rubric-table">
+                    <thead>
+                        <tr>
+                            <th>AI Fingerprint</th>
+                            <th>What to Look For</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Transition Overload</td>
+                            <td>Moreover, furthermore, additionally in every paragraph</td>
+                            <td>"Furthermore, the protagonist additionally demonstrates..."</td>
+                        </tr>
+                        <tr>
+                            <td>Perfect Structure</td>
+                            <td>Every paragraph follows exact same pattern</td>
+                            <td>Topic sentence → 3 points → conclusion (repeated)</td>
+                        </tr>
+                        <tr>
+                            <td>Generic Examples</td>
+                            <td>No specific classroom or local references</td>
+                            <td>Uses "a school" instead of "our school"</td>
+                        </tr>
+                        <tr>
+                            <td>Inconsistent Voice</td>
+                            <td>Switches between formal and informal randomly</td>
+                            <td>"The dude was totally sad. Furthermore, he exhibited melancholy."</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Better Approach: AI-Resistant Assignments</h3>
+                <div class="resources">
+                    <div class="resource-card">
+                        <i class="fas fa-user-circle"></i>
+                        <h4>Personal Connection</h4>
+                        <p>"Compare Scout's courage to a time you stood up for something at our school"</p>
+                        <a href="#" class="download-btn">Template</a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-calendar-week"></i>
+                        <h4>Process Documentation</h4>
+                        <p>Week-long projects with daily check-ins and evolving drafts</p>
+                        <a href="#" class="download-btn">Template</a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-video"></i>
+                        <h4>Multimodal Projects</h4>
+                        <p>"Create a TikTok explaining the concept, then reflect on your choices"</p>
+                        <a href="#" class="download-btn">Template</a>
+                    </div>
+                </div>
+
+                <div class="activity">
+                    <h4><i class="fas fa-comments"></i> The AI Conversation Guide</h4>
+                    <p>When you suspect AI use, try curiosity instead of accusation:</p>
+                    <ul>
+                        <li>"Walk me through how you developed this paragraph"</li>
+                        <li>"What was the hardest part of this assignment?"</li>
+                        <li>"Which section are you most proud of and why?"</li>
+                        <li>"If you used any tools, can you show me how?"</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="background-color: #fef7e0; margin-top: 2rem;">
+                    <h3>🔍 Case Study: Oak Valley High School English Department</h3>
+                    <h4>The Challenge:</h4>
+                    <p>Teachers spent hours trying to "catch" AI use with detection software, creating an adversarial relationship with students. False positives were damaging trust, especially with ESL students.</p>
+                    
+                    <h4>The Pivot:</h4>
+                    <ul>
+                        <li><strong>Abandoned:</strong> AI detection software (only 52% accurate)</li>
+                        <li><strong>Adopted:</strong> Process-based assessment</li>
+                        <li><strong>Implemented:</strong> AI-resistant assignment design</li>
+                        <li><strong>Created:</strong> Transparent AI use policies</li>
+                    </ul>
+                    
+                    <h4>Assignment Transformation Example:</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
+                        <div style="background: #fce8e6; padding: 1rem; border-radius: 8px;">
+                            <h5>❌ Before (AI-Vulnerable):</h5>
+                            <p>"Write a 5-paragraph essay analyzing symbolism in The Great Gatsby"</p>
+                        </div>
+                        <div style="background: #e6f4ea; padding: 1rem; border-radius: 8px;">
+                            <h5>✅ After (AI-Resistant):</h5>
+                            <p>"Compare Gatsby's green light to something you've yearned for in your own life. Include our class discussion about the American Dream at OVHS"</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Measurable Results:</h4>
+                    <ul>
+                        <li><strong>Time saved:</strong> 15 hours/week previously spent on AI detection</li>
+                        <li><strong>Student trust:</strong> 94% feel teachers are "fair about AI use"</li>
+                        <li><strong>Writing quality:</strong> 35% improvement in authentic voice</li>
+                        <li><strong>Parent satisfaction:</strong> 88% support the new approach</li>
+                    </ul>
+                    
+                    <blockquote style="border-left: 4px solid var(--warning-color); padding-left: 1rem; margin: 1rem 0; font-style: italic;">
+                        "We stopped being the AI police and started being writing coaches again. The irony? Students are using AI less now that it's allowed with citation."
+                        <br><strong>- Sarah Chen, Department Chair</strong>
+                    </blockquote>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-secondary" onclick="showModule('module1')"><i class="fas fa-arrow-left"></i> Back</button>
+                    <button class="btn btn-primary" onclick="showModule('module3')">Continue to Module 3 <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 3: Teaching WITH AI -->
+        <div id="module3" class="module">
+            <div class="card">
+                <h2>Module 3: Teaching WITH AI - Practical Strategies</h2>
+                
+                <div class="video-container">
+                    <div class="video-placeholder" onclick="playVideo('module3')">
+                        <div>
+                            <i class="fas fa-play-circle"></i>
+                            <p>Watch: Transform Your Classroom with AI<br>(60 minutes)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>AI as Your Teaching Assistant</h3>
+                <div class="activity">
+                    <h4><i class="fas fa-magic"></i> Try These Teacher Prompts</h4>
+                    <ol>
+                        <li><strong>Lesson Planning:</strong> "Create a 5E lesson plan for 8th grade on the water cycle with hands-on activities"</li>
+                        <li><strong>Differentiation:</strong> "Rewrite this paragraph about cells at a 3rd grade reading level"</li>
+                        <li><strong>Assessment:</strong> "Generate 10 application-level questions about the American Revolution"</li>
+                        <li><strong>Parent Communication:</strong> "Draft a positive email about a student improving from F to C+"</li>
+                    </ol>
+                </div>
+
+                <h3>Student AI Literacy Curriculum</h3>
+                <div class="card" style="background-color: #e8f0fe;">
+                    <h4>4-Week Implementation Plan</h4>
+                    <p><strong>Week 1: AI Basics</strong></p>
+                    <ul>
+                        <li>Day 1: What is AI? (Unplugged activities)</li>
+                        <li>Day 2: First ChatGPT exploration</li>
+                        <li>Day 3: Prompt engineering basics</li>
+                        <li>Day 4: Finding AI mistakes</li>
+                        <li>Day 5: Creating class AI agreement</li>
+                    </ul>
+                    
+                    <p><strong>Week 2: AI as Learning Partner</strong></p>
+                    <ul>
+                        <li>Brainstorming buddy</li>
+                        <li>Research assistant</li>
+                        <li>Writing coach</li>
+                        <li>Study guide creator</li>
+                    </ul>
+                </div>
+
+                <h3>Classroom Implementation Models</h3>
+                <div class="resources">
+                    <div class="resource-card">
+                        <i class="fas fa-balance-scale"></i>
+                        <h4>The AI Debate</h4>
+                        <p>Students argue against ChatGPT's position using evidence</p>
+                        <a href="#" class="download-btn">Lesson Plan</a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-search"></i>
+                        <h4>Error Analysis Lab</h4>
+                        <p>Find and correct mistakes in AI-generated content</p>
+                        <a href="#" class="download-btn">Lesson Plan</a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-pen-alt"></i>
+                        <h4>Collaborative Creation</h4>
+                        <p>Students and AI alternate writing paragraphs</p>
+                        <a href="#" class="download-btn">Lesson Plan</a>
+                    </div>
+                </div>
+
+                <h3>Assessment in the AI Age</h3>
+                <table class="rubric-table">
+                    <thead>
+                        <tr>
+                            <th>Strategy</th>
+                            <th>Description</th>
+                            <th>Why It Works</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Process Portfolio</td>
+                            <td>Collect all drafts, AI logs, reflections</td>
+                            <td>Shows thinking evolution</td>
+                        </tr>
+                        <tr>
+                            <td>Verbal Defense</td>
+                            <td>2-minute explanation of choices</td>
+                            <td>Can't fake understanding</td>
+                        </tr>
+                        <tr>
+                            <td>Teaching Test</td>
+                            <td>Explain concept to younger student</td>
+                            <td>Requires true mastery</td>
+                        </tr>
+                        <tr>
+                            <td>Local Application</td>
+                            <td>Solve real school/community problem</td>
+                            <td>AI can't know specifics</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="card" style="background-color: #e8f0fe; margin-top: 2rem;">
+                    <h3>🎯 Case Study: Washington Middle School Science Department</h3>
+                    <h4>The Innovation:</h4>
+                    <p>8th grade science teacher Mr. David Park pioneered "AI Lab Partners" - students use ChatGPT as a research assistant while conducting real experiments.</p>
+                    
+                    <h4>The Implementation:</h4>
+                    <div class="activity" style="background: white;">
+                        <h5>Week 1: AI Science Literacy</h5>
+                        <ul>
+                            <li>Students asked AI to explain photosynthesis</li>
+                            <li>Then tested AI's explanation with real plants</li>
+                            <li>Discovered AI's theoretical knowledge vs. practical gaps</li>
+                        </ul>
+                        
+                        <h5>Week 2-4: Ecosystem Project</h5>
+                        <ul>
+                            <li>Used AI to research theoretical ecosystems</li>
+                            <li>Built actual terrarium based on AI suggestions</li>
+                            <li>Documented where AI was wrong (spoiler: often!)</li>
+                            <li>Wrote lab reports comparing AI theory vs. reality</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Student Work Sample:</h4>
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; font-style: italic;">
+                        "ChatGPT told us our moss would thrive in direct sunlight. After 3 days, it turned brown. We researched and learned moss needs indirect light. AI knew facts but not practical application. Our revised terrarium is thriving!"
+                        <br><strong>- Aisha, 8th grade</strong>
+                    </div>
+                    
+                    <h4>Quantifiable Outcomes:</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                        <div style="background: var(--secondary-color); color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <h3 style="margin: 0;">156%</h3>
+                            <p style="margin: 0;">Increase in hypothesis quality</p>
+                        </div>
+                        <div style="background: var(--primary-color); color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <h3 style="margin: 0;">89%</h3>
+                            <p style="margin: 0;">Students identified AI errors</p>
+                        </div>
+                        <div style="background: var(--warning-color); color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <h3 style="margin: 0;">100%</h3>
+                            <p style="margin: 0;">Engagement rate</p>
+                        </div>
+                        <div style="background: var(--accent-color); color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <h3 style="margin: 0;">2x</h3>
+                            <p style="margin: 0;">State test score improvement</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Teacher Reflection:</h4>
+                    <blockquote style="border-left: 4px solid var(--primary-color); padding-left: 1rem; margin: 1rem 0; font-style: italic;">
+                        "AI became a starting point, not an endpoint. Students are thinking more critically because they're constantly evaluating AI's suggestions against real-world results. They're learning science AND developing crucial AI literacy."
+                        <br><strong>- David Park, 8th Grade Science</strong>
+                    </blockquote>
+                    
+                    <h4>Replication Guide:</h4>
+                    <p>Download Mr. Park's complete lesson plans, rubrics, and student handouts:</p>
+                    <button class="download-btn" onclick="downloadResource('ai-lab-partner-guide')">Download AI Lab Partner Guide</button>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-secondary" onclick="showModule('module2')"><i class="fas fa-arrow-left"></i> Back</button>
+                    <button class="btn btn-primary" onclick="showModule('module4')">Continue to Module 4 <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 4: Critical Thinking -->
+        <div id="module4" class="module">
+            <div class="card">
+                <h2>Module 4: Critical Thinking in the AI Era</h2>
+                
+                <div class="video-container">
+                    <div class="video-placeholder" onclick="playVideo('module4')">
+                        <div>
+                            <i class="fas fa-play-circle"></i>
+                            <p>Watch: Beyond the First Draft<br>(45 minutes)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>New Bloom's Taxonomy for AI Age</h3>
+                <div class="card" style="background-color: #f8f9fa;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Traditional</th>
+                                <th>AI-Era Adaptation</th>
+                                <th>Example Activity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Remember</td>
+                                <td>Evaluate AI's Memory</td>
+                                <td>"Is ChatGPT's recall of the Civil War accurate?"</td>
+                            </tr>
+                            <tr>
+                                <td>Understand</td>
+                                <td>Verify AI's Understanding</td>
+                                <td>"Where does AI misinterpret this poem?"</td>
+                            </tr>
+                            <tr>
+                                <td>Apply</td>
+                                <td>Guide AI Application</td>
+                                <td>"How would you prompt AI to solve this differently?"</td>
+                            </tr>
+                            <tr>
+                                <td>Analyze</td>
+                                <td>Critique AI Analysis</td>
+                                <td>"What connections did AI miss in this text?"</td>
+                            </tr>
+                            <tr>
+                                <td>Evaluate</td>
+                                <td>Judge AI Output</td>
+                                <td>"Rate AI's argument using our rubric"</td>
+                            </tr>
+                            <tr>
+                                <td>Create</td>
+                                <td>Collaborate with AI</td>
+                                <td>"Use AI as tool to create something original"</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Real-World AI Integration</h3>
+                <div class="activity">
+                    <h4><i class="fas fa-briefcase"></i> Career Preparation</h4>
+                    <p>Show students how professionals actually use AI:</p>
+                    <ul>
+                        <li><strong>Journalists:</strong> AI for research, humans for interviews</li>
+                        <li><strong>Programmers:</strong> AI for boilerplate code, humans for logic</li>
+                        <li><strong>Writers:</strong> AI for outlines, humans for voice</li>
+                        <li><strong>Scientists:</strong> AI for data analysis, humans for interpretation</li>
+                    </ul>
+                </div>
+
+                <div class="quiz">
+                    <h4>Application Challenge</h4>
+                    <div class="quiz-question">
+                        <p>Design an assignment that requires students to use AI as a tool while demonstrating critical thinking. Share your idea:</p>
+                        <textarea style="width: 100%; height: 100px; margin: 1rem 0;" placeholder="Describe your AI-integrated assignment idea..."></textarea>
+                    </div>
+                    <button class="quiz-submit" onclick="saveResponse('assignment-idea')">Save Response</button>
+                </div>
+
+                <div class="card" style="background-color: #fce8e6; margin-top: 2rem;">
+                    <h3>🧠 Case Study: Lincoln High AP History</h3>
+                    <h4>The Challenge:</h4>
+                    <p>AP History teacher Ms. Angela Foster noticed her students were using AI to write DBQ essays, resulting in generic arguments lacking historical thinking skills.</p>
+                    
+                    <h4>The Solution: "AI Historical Debate Partner"</h4>
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                        <h5>Assignment Redesign:</h5>
+                        <p><strong>Old:</strong> "Analyze the causes of the American Revolution"</p>
+                        <p><strong>New:</strong> "You're a colonist in 1775. Use AI to argue FOR independence. Then switch - argue AGAINST it. Finally, find the flaws in both AI arguments using primary sources."</p>
+                    </div>
+                    
+                    <h4>Student Process:</h4>
+                    <ol>
+                        <li><strong>Round 1:</strong> Prompted AI to argue as a patriot</li>
+                        <li><strong>Round 2:</strong> Prompted AI to argue as a loyalist</li>
+                        <li><strong>Critical Analysis:</strong> Found historical inaccuracies in both</li>
+                        <li><strong>Synthesis:</strong> Wrote their own nuanced argument</li>
+                    </ol>
+                    
+                    <h4>Example Student Discovery:</h4>
+                    <div class="activity" style="background: #e6f4ea;">
+                        <p><strong>Emma (11th grade) found:</strong></p>
+                        <p>"ChatGPT said colonists were unified against Britain, but my research showed 20-30% were Loyalists. It also didn't mention economic motivations of merchants. AI gave me a starting point, but real history is messier."</p>
+                    </div>
+                    
+                    <h4>Results After One Semester:</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1rem 0;">
+                        <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 2px solid var(--primary-color);">
+                            <h5 style="color: var(--primary-color);">AP Exam Performance</h5>
+                            <ul>
+                                <li>DBQ scores: +1.2 points average increase</li>
+                                <li>94% passed (up from 78%)</li>
+                                <li>32% scored 5 (up from 18%)</li>
+                            </ul>
+                        </div>
+                        <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 2px solid var(--secondary-color);">
+                            <h5 style="color: var(--secondary-color);">Critical Thinking Skills</h5>
+                            <ul>
+                                <li>100% could identify AI biases</li>
+                                <li>87% found factual errors</li>
+                                <li>95% used primary sources effectively</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Student Testimonial:</h4>
+                    <blockquote style="border-left: 4px solid var(--accent-color); padding-left: 1rem; margin: 1rem 0; font-style: italic;">
+                        "Before, I'd stress about writing the 'perfect' thesis. Now I debate with AI, find its mistakes, and my own arguments are stronger. I'm thinking like a historian, not just memorizing facts."
+                        <br><strong>- Marcus, scored 5 on AP exam</strong>
+                    </blockquote>
+                    
+                    <h4>College Readiness Impact:</h4>
+                    <p>Follow-up survey of graduates (n=45):</p>
+                    <ul>
+                        <li>96% felt "very prepared" for college-level research</li>
+                        <li>91% successfully used AI tools in college with proper citation</li>
+                        <li>100% could evaluate source reliability</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-secondary" onclick="showModule('module3')"><i class="fas fa-arrow-left"></i> Back</button>
+                    <button class="btn btn-primary" onclick="showModule('module5')">Continue to Module 5 <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 5: Implementation -->
+        <div id="module5" class="module">
+            <div class="card">
+                <h2>Module 5: Your 30-Day Implementation Plan</h2>
+                
+                <div class="video-container">
+                    <div class="video-placeholder" onclick="playVideo('module5')">
+                        <div>
+                            <i class="fas fa-play-circle"></i>
+                            <p>Watch: From Theory to Practice<br>(45 minutes)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Week-by-Week Roadmap</h3>
+                
+                <div class="card" style="background-color: #e8f0fe;">
+                    <h4>📅 Week 1: Foundation Building</h4>
+                    <ul>
+                        <li>✓ Create your ChatGPT account</li>
+                        <li>✓ Try 10 teacher prompts</li>
+                        <li>✓ Connect with colleague</li>
+                        <li>✓ Draft classroom AI policy</li>
+                        <li>✓ Prepare parent communication</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="background-color: #e6f4ea;">
+                    <h4>📅 Week 2: Student Introduction</h4>
+                    <ul>
+                        <li>✓ AI literacy lesson</li>
+                        <li>✓ Create class agreement together</li>
+                        <li>✓ Practice activities</li>
+                        <li>✓ First academic integration</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="background-color: #fef7e0;">
+                    <h4>📅 Week 3: Full Implementation</h4>
+                    <ul>
+                        <li>✓ Launch major AI-enhanced project</li>
+                        <li>✓ Monitor and support</li>
+                        <li>✓ Document successes</li>
+                        <li>✓ Student showcase</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="background-color: #fce8e6;">
+                    <h4>📅 Week 4: Refinement & Expansion</h4>
+                    <ul>
+                        <li>✓ Analyze data</li>
+                        <li>✓ Refine approach</li>
+                        <li>✓ Share with colleagues</li>
+                        <li>✓ Plan next month</li>
+                    </ul>
+                </div>
+
+                <h3>Your Personal Action Plan</h3>
+                <div class="activity">
+                    <h4><i class="fas fa-clipboard-check"></i> Complete Your Plan</h4>
+                    <form id="action-plan">
+                        <div style="margin: 1rem 0;">
+                            <label><strong>My biggest concern about AI:</strong></label>
+                            <input type="text" style="width: 100%; padding: 0.5rem;" placeholder="What worries you most?">
+                        </div>
+                        <div style="margin: 1rem 0;">
+                            <label><strong>My plan to address it:</strong></label>
+                            <input type="text" style="width: 100%; padding: 0.5rem;" placeholder="How will you overcome this?">
+                        </div>
+                        <div style="margin: 1rem 0;">
+                            <label><strong>My first AI-integrated lesson will be:</strong></label>
+                            <input type="text" style="width: 100%; padding: 0.5rem;" placeholder="What will you try first?">
+                        </div>
+                        <div style="margin: 1rem 0;">
+                            <label><strong>My accountability partner:</strong></label>
+                            <input type="text" style="width: 100%; padding: 0.5rem;" placeholder="Who will support you?">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save My Plan</button>
+                    </form>
+                </div>
+
+                <div class="card" style="background-color: #e8f0fe; text-align: center; margin-top: 2rem;">
+                    <h3>🎉 Congratulations!</h3>
+                    <p>You've completed the AI-Powered Learning training. You're now ready to transform your classroom.</p>
+                    <button class="btn btn-primary" onclick="generateCertificate()">Generate Certificate</button>
+                </div>
+
+                <div class="card" style="background-color: #e6f4ea; margin-top: 2rem;">
+                    <h3>🏫 Case Study: Riverside Elementary's School-Wide Implementation</h3>
+                    <h4>The Context:</h4>
+                    <p>Riverside Elementary (K-5, 450 students, 32 teachers) implemented AI integration across all grades after parent concerns about "kids using ChatGPT for homework."</p>
+                    
+                    <h4>30-Day Implementation Timeline:</h4>
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px;">
+                        <h5>Week 1: Foundation (Teacher Prep)</h5>
+                        <ul>
+                            <li>Day 1-2: All-staff training (this curriculum)</li>
+                            <li>Day 3: Teachers experimented with AI personally</li>
+                            <li>Day 4: Grade teams created AI policies together</li>
+                            <li>Day 5: Parent communication letters sent home</li>
+                        </ul>
+                        
+                        <h5>Week 2: Soft Launch (Testing)</h5>
+                        <ul>
+                            <li>Each grade piloted one AI activity</li>
+                            <li>K-2: AI story starters for creative writing</li>
+                            <li>3-5: AI as reading comprehension partner</li>
+                            <li>Daily teacher debriefs at lunch</li>
+                        </ul>
+                        
+                        <h5>Week 3: Full Implementation</h5>
+                        <ul>
+                            <li>AI literacy lessons in all classes</li>
+                            <li>Students created "AI Use Guidelines" posters</li>
+                            <li>Parent workshop: "AI at Home" (73% attendance!)</li>
+                        </ul>
+                        
+                        <h5>Week 4: Refinement & Celebration</h5>
+                        <ul>
+                            <li>Student showcase of AI-assisted projects</li>
+                            <li>Teacher reflection and planning session</li>
+                            <li>Media coverage: "Local School Embraces AI"</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Data-Driven Results (3-Month Follow-up):</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                        <div style="background: #1a73e8; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <h2 style="margin: 0;">28%</h2>
+                            <p style="margin: 0.5rem 0 0 0;">Increase in writing scores</p>
+                        </div>
+                        <div style="background: #34a853; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <h2 style="margin: 0;">91%</h2>
+                            <p style="margin: 0.5rem 0 0 0;">Parent approval rating</p>
+                        </div>
+                        <div style="background: #fbbc04; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <h2 style="margin: 0;">100%</h2>
+                            <p style="margin: 0.5rem 0 0 0;">Teacher buy-in achieved</p>
+                        </div>
+                        <div style="background: #ea4335; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <h2 style="margin: 0;">0</h2>
+                            <p style="margin: 0.5rem 0 0 0;">Cheating incidents</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Unexpected Benefits:</h4>
+                    <ul>
+                        <li><strong>Special Education:</strong> AI helped struggling readers access grade-level content</li>
+                        <li><strong>ELL Students:</strong> Used AI for language translation and practice</li>
+                        <li><strong>Gifted Program:</strong> Students created AI-powered learning games</li>
+                        <li><strong>Teacher Wellness:</strong> 2 hours/week saved on lesson planning</li>
+                    </ul>
+                    
+                    <h4>Principal's Reflection:</h4>
+                    <blockquote style="border-left: 4px solid var(--primary-color); padding-left: 1rem; margin: 1rem 0; font-style: italic;">
+                        "We went from fearing AI to embracing it as a tool for equity. Our struggling students now have 24/7 access to a patient tutor. Our advanced students are creating things we never imagined. Most importantly, our teachers are energized again."
+                        <br><strong>- Dr. Patricia Williams, Principal</strong>
+                    </blockquote>
+                    
+                    <h4>Key Success Factors:</h4>
+                    <ol>
+                        <li><strong>Leadership support:</strong> Principal participated in all training</li>
+                        <li><strong>Teacher autonomy:</strong> Each could adapt to their style</li>
+                        <li><strong>Parent partnership:</strong> Transparent communication throughout</li>
+                        <li><strong>Student voice:</strong> Kids helped create the rules</li>
+                        <li><strong>Continuous improvement:</strong> Weekly check-ins and adjustments</li>
+                    </ol>
+                    
+                    <h4>Sustainability Plan:</h4>
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                        <p><strong>Year 2 Goals:</strong></p>
+                        <ul>
+                            <li>Mentor 3 neighboring schools</li>
+                            <li>Publish action research findings</li>
+                            <li>Host district-wide AI showcase</li>
+                            <li>Apply for innovation grants</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-secondary" onclick="showModule('module4')"><i class="fas fa-arrow-left"></i> Back</button>
+                    <button class="btn btn-primary" onclick="showModule('resources')">View Resources <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources -->
+        <div id="resources" class="module">
+            <div class="card">
+                <h2>Resources & Downloads</h2>
+                
+                <h3>Downloadable Templates</h3>
+                <div class="resources">
+                    <div class="resource-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>AI Policy Template</h4>
+                        <p>Customizable classroom policy</p>
+                        <a href="#" class="download-btn" onclick="downloadResource('ai-policy')">Download</a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-comments"></i>
+                        <h4>Parent Letter</h4>
+                        <p>Explain AI integration to families</p>
+                        <a href="#" class="download-btn" onclick="downloadResource('parent-letter')">Download</a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-tasks"></i>
+                        <h4>Assignment Redesign Kit</h4>
+                        <p>Transform traditional assignments</p>
+                        <a href="#" class="download-btn" onclick="downloadResource('assignment-kit')">Download</a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-table"></i>
+                        <h4>Assessment Rubrics</h4>
+                        <p>AI-aware grading tools</p>
+                        <a href="#" class="download-btn" onclick="downloadResource('rubrics')">Download</a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h4>30-Day Calendar</h4>
+                        <p>Implementation timeline</p>
+                        <a href="#" class="download-btn" onclick="downloadResource('calendar')">Download</a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-brain"></i>
+                        <h4>AI Literacy Workbook</h4>
+                        <p>Student activities and lessons</p>
+                        <a href="#" class="download-btn" onclick="downloadResource('workbook')">Download</a>
+                    </div>
+                </div>
+
+                <h3>Quick Reference Guides</h3>
+                <div class="card" style="background-color: #f8f9fa;">
+                    <h4>AI Detection Cheat Sheet</h4>
+                    <ul>
+                        <li>🚩 Transition word overload (moreover, furthermore, additionally)</li>
+                        <li>🚩 Perfect paragraph structure throughout</li>
+                        <li>🚩 Generic examples with no local context</li>
+                        <li>🚩 Inconsistent voice or tone shifts</li>
+                        <li>🚩 Conclusion always starts with "In conclusion"</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="background-color: #e8f0fe;">
+                    <h4>Teacher AI Prompts Library</h4>
+                    <ul>
+                        <li>📝 "Create differentiated versions of this text for reading levels 3-8"</li>
+                        <li>📊 "Generate a rubric for [assignment] focusing on [skills]"</li>
+                        <li>💡 "Suggest 5 engaging hooks for teaching [topic] to [grade]"</li>
+                        <li>🎯 "Create practice problems for [concept] with increasing difficulty"</li>
+                        <li>📧 "Draft a positive parent email about [student situation]"</li>
+                    </ul>
+                </div>
+
+                <h3>Community & Support</h3>
+                <div class="activity">
+                    <h4><i class="fas fa-users"></i> Join the Community</h4>
+                    <p>Connect with other educators transforming their classrooms with AI:</p>
+                    <ul>
+                        <li>Monthly virtual meetups</li>
+                        <li>Shared resource library</li>
+                        <li>Success story showcase</li>
+                        <li>Troubleshooting support</li>
+                    </ul>
+                    <button class="btn btn-primary">Join Educator Network</button>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-secondary" onclick="showModule('module5')"><i class="fas fa-arrow-left"></i> Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Module Navigation
+        function showModule(moduleId) {
+            // Hide all modules
+            const modules = document.querySelectorAll('.module');
+            modules.forEach(module => module.classList.remove('active'));
+            
+            // Show selected module
+            document.getElementById(moduleId).classList.add('active');
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target?.classList.add('active');
+            
+            // Update progress
+            updateProgress();
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Save progress to localStorage
+            saveProgress(moduleId);
+        }
+
+        // Progress Tracking
+        let completedModules = JSON.parse(localStorage.getItem('completedModules')) || [];
+
+        function updateProgress() {
+            const currentModule = document.querySelector('.module.active').id;
+            if (!completedModules.includes(currentModule)) {
+                completedModules.push(currentModule);
+                localStorage.setItem('completedModules', JSON.stringify(completedModules));
+            }
+            
+            const totalModules = 6;
+            const progress = (completedModules.length / totalModules) * 100;
+            
+            document.getElementById('progress-bar').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = Math.round(progress);
+        }
+
+        // Quiz Functions
+        function checkAnswer(questionId, correctAnswer, moduleId) {
+            const question = document.querySelector(`input[name="${questionId}"]:checked`);
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (!question) {
+                alert('Please select an answer');
+                return;
+            }
+            
+            feedback.style.display = 'block';
+            
+            if (question.value === correctAnswer) {
+                feedback.className = 'quiz-feedback correct';
+                feedback.innerHTML = '<i class="fas fa-check-circle"></i> Correct! ChatGPT cannot access current or specific information about your school or recent events.';
+            } else {
+                feedback.className = 'quiz-feedback incorrect';
+                feedback.innerHTML = '<i class="fas fa-times-circle"></i> Not quite. Remember, ChatGPT\'s training data has a cutoff date and no access to specific local information.';
+            }
+            
+            // Save quiz attempt
+            const quizAttempts = JSON.parse(localStorage.getItem('quizAttempts')) || {};
+            quizAttempts[questionId] = {
+                answer: question.value,
+                correct: question.value === correctAnswer,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('quizAttempts', JSON.stringify(quizAttempts));
+        }
+
+        // Video Placeholder
+        function playVideo(videoId) {
+            alert(`Video player would load here for: ${videoId}\n\nIn the full version, this would play the training video.`);
+        }
+
+        // Resource Downloads
+        function downloadResource(resourceId) {
+            alert(`Downloading: ${resourceId}\n\nIn the full version, this would download the resource file.`);
+            
+            // Track downloads
+            const downloads = JSON.parse(localStorage.getItem('downloads')) || [];
+            downloads.push({
+                resource: resourceId,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('downloads', JSON.stringify(downloads));
+        }
+
+        // Save Responses
+        function saveResponse(responseId) {
+            const textarea = event.target.previousElementSibling.querySelector('textarea');
+            const value = textarea.value;
+            
+            if (!value) {
+                alert('Please enter your response');
+                return;
+            }
+            
+            const responses = JSON.parse(localStorage.getItem('responses')) || {};
+            responses[responseId] = {
+                value: value,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('responses', JSON.stringify(responses));
+            
+            alert('Response saved! You can continue to the next section.');
+        }
+
+        // Save Progress
+        function saveProgress(moduleId) {
+            const progress = {
+                currentModule: moduleId,
+                lastAccessed: new Date().toISOString(),
+                completedModules: completedModules
+            };
+            localStorage.setItem('trainingProgress', JSON.stringify(progress));
+        }
+
+        // Generate Certificate
+        function generateCertificate() {
+            const name = prompt('Enter your name for the certificate:');
+            if (!name) return;
+            
+            const completionData = {
+                name: name,
+                date: new Date().toLocaleDateString(),
+                modules: completedModules.length,
+                certificateId: 'AI-' + Date.now()
+            };
+            
+            localStorage.setItem('certificate', JSON.stringify(completionData));
+            
+            alert(`Certificate generated for ${name}!\n\nCertificate ID: ${completionData.certificateId}\n\nIn the full version, this would generate a downloadable PDF certificate.`);
+        }
+
+        // Action Plan
+        document.getElementById('action-plan')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                concern: e.target[0].value,
+                plan: e.target[1].value,
+                firstLesson: e.target[2].value,
+                partner: e.target[3].value,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('actionPlan', JSON.stringify(formData));
+            alert('Your action plan has been saved! You\'re ready to begin your AI integration journey.');
+        });
+
+        // Show Quiz Function
+        function showQuiz(quizType) {
+            // For now, we'll create a simple modal with the pre-assessment
+            const quizHTML = `
+                <div id="quiz-modal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 2000;">
+                    <div style="background: white; padding: 2rem; border-radius: 8px; max-width: 600px; max-height: 80vh; overflow-y: auto; position: relative;">
+                        <button onclick="closeQuiz()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+                        <h2>Pre-Training Assessment</h2>
+                        <p>This quick assessment helps us understand your starting point.</p>
+                        
+                        <form id="pre-assessment-form">
+                            <div class="quiz-question">
+                                <p><strong>1. How familiar are you with ChatGPT/AI tools?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="familiar" value="1"> Never heard of it</label>
+                                    <label><input type="radio" name="familiar" value="2"> Heard of it, never used</label>
+                                    <label><input type="radio" name="familiar" value="3"> Tried it once or twice</label>
+                                    <label><input type="radio" name="familiar" value="4"> Use occasionally</label>
+                                    <label><input type="radio" name="familiar" value="5"> Regular user</label>
+                                </div>
+                            </div>
+                            
+                            <div class="quiz-question">
+                                <p><strong>2. What percentage of your students do you believe have used AI for assignments?</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="percentage" value="1"> 0-20%</label>
+                                    <label><input type="radio" name="percentage" value="2"> 21-40%</label>
+                                    <label><input type="radio" name="percentage" value="3"> 41-60%</label>
+                                    <label><input type="radio" name="percentage" value="4"> 61-80%</label>
+                                    <label><input type="radio" name="percentage" value="5"> 81-100%</label>
+                                </div>
+                            </div>
+                            
+                            <div class="quiz-question">
+                                <p><strong>3. My biggest concern about AI in education is:</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="concern" value="1"> Students will stop thinking for themselves</label>
+                                    <label><input type="radio" name="concern" value="2"> I can't detect when they use it</label>
+                                    <label><input type="radio" name="concern" value="3"> It's too complicated for me to understand</label>
+                                    <label><input type="radio" name="concern" value="4"> Parents/administration won't support AI use</label>
+                                    <label><input type="radio" name="concern" value="5"> Other concerns</label>
+                                </div>
+                            </div>
+                            
+                            <div class="quiz-question">
+                                <p><strong>4. I currently handle suspected AI use by:</strong></p>
+                                <div class="quiz-options">
+                                    <label><input type="radio" name="handle" value="1"> I haven't encountered it yet</label>
+                                    <label><input type="radio" name="handle" value="2"> Giving zeros for AI-generated work</label>
+                                    <label><input type="radio" name="handle" value="3"> Asking students to redo assignments</label>
+                                    <label><input type="radio" name="handle" value="4"> I'm not sure what to do</label>
+                                    <label><input type="radio" name="handle" value="5"> Having conversations about appropriate use</label>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 2rem;">
+                                <button type="button" onclick="submitPreAssessment()" class="btn btn-primary">Submit Assessment</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+            
+            // Add the modal to the page
+            document.body.insertAdjacentHTML('beforeend', quizHTML);
+        }
+        
+        function closeQuiz() {
+            const modal = document.getElementById('quiz-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+        
+        function submitPreAssessment() {
+            const form = document.getElementById('pre-assessment-form');
+            const formData = new FormData(form);
+            
+            // Check if all questions are answered
+            const questions = ['familiar', 'percentage', 'concern', 'handle'];
+            let allAnswered = true;
+            
+            questions.forEach(q => {
+                if (!formData.get(q)) {
+                    allAnswered = false;
+                }
+            });
+            
+            if (!allAnswered) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+            
+            // Save the assessment results
+            const results = {
+                familiar: formData.get('familiar'),
+                percentage: formData.get('percentage'),
+                concern: formData.get('concern'),
+                handle: formData.get('handle'),
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('preAssessment', JSON.stringify(results));
+            
+            // Close modal and show success message
+            closeQuiz();
+            alert('Thank you for completing the assessment! Your responses have been saved. You can now proceed with the training.');
+            
+            // Update progress
+            updateProgress();
+        }
+
+        // Interactive assessment functions
+        function showGatsbyFeedback(choice) {
+            const feedbackDiv = document.getElementById('gatsby-feedback');
+            feedbackDiv.style.display = 'block';
+            
+            if (choice === 'b') {
+                feedbackDiv.className = 'quiz-feedback correct';
+                feedbackDiv.innerHTML = '<i class="fas fa-check-circle"></i> Correct! Response B shows classic AI fingerprints: transition word overload ("Furthermore", "Moreover"), overly formal language, and generic literary analysis without personal connection.';
+            } else {
+                feedbackDiv.className = 'quiz-feedback incorrect';
+                feedbackDiv.innerHTML = '<i class="fas fa-times-circle"></i> Look again. Response A has authentic student voice, personal connections, informal language, and even humor. Response B has all the AI markers: perfect structure, transition words, and formal academic language.';
+            }
+        }
+
+        function checkAIDetection(textId) {
+            const results = {
+                'ai-text-1': { isAI: true, reason: 'Perfect paragraph structure, transition overload, generic examples' },
+                'ai-text-2': { isAI: false, reason: 'Personal anecdotes, inconsistent structure, authentic voice' },
+                'ai-text-3': { isAI: true, reason: '"In conclusion" starter, formal throughout, no specific examples' },
+                'ai-text-4': { isAI: false, reason: 'Specific class references, natural voice changes, real confusion shown' }
+            };
+            
+            const userChoice = document.querySelector(`input[name="${textId}"]:checked`);
+            if (!userChoice) {
+                alert('Please select whether you think this is AI-generated or human-written.');
+                return;
+            }
+            
+            const correct = results[textId];
+            const feedbackDiv = document.getElementById(`${textId}-feedback`);
+            
+            if ((userChoice.value === 'ai' && correct.isAI) || (userChoice.value === 'human' && !correct.isAI)) {
+                feedbackDiv.className = 'quiz-feedback correct';
+                feedbackDiv.innerHTML = `<i class="fas fa-check-circle"></i> Correct! ${correct.reason}`;
+            } else {
+                feedbackDiv.className = 'quiz-feedback incorrect';
+                feedbackDiv.innerHTML = `<i class="fas fa-times-circle"></i> Not quite. ${correct.reason}`;
+            }
+            feedbackDiv.style.display = 'block';
+        }
+
+        function showScenarioFeedback(scenarioId, choice) {
+            const scenarios = {
+                'caught-ai': {
+                    a: { good: false, feedback: 'Confrontation rarely leads to learning. This approach damages trust.' },
+                    b: { good: true, feedback: 'Perfect! This creates a learning opportunity and builds AI literacy.' },
+                    c: { good: false, feedback: 'Avoidance solves nothing and misses a teaching moment.' },
+                    d: { good: false, feedback: 'Punishment without education doesn\'t prepare students for their future.' }
+                },
+                'parent-concern': {
+                    a: { good: false, feedback: 'Dismissing concerns damages the parent-teacher relationship.' },
+                    b: { good: false, feedback: 'Avoiding the conversation increases anxiety and mistrust.' },
+                    c: { good: true, feedback: 'Excellent! Education and transparency build partnership.' },
+                    d: { good: false, feedback: 'Defensive responses escalate conflicts rather than resolve them.' }
+                }
+            };
+            
+            const feedbackDiv = document.getElementById(`${scenarioId}-feedback`);
+            const scenario = scenarios[scenarioId][choice];
+            
+            feedbackDiv.className = scenario.good ? 'quiz-feedback correct' : 'quiz-feedback incorrect';
+            feedbackDiv.innerHTML = `<i class="fas ${scenario.good ? 'fa-check-circle' : 'fa-times-circle'}"></i> ${scenario.feedback}`;
+            feedbackDiv.style.display = 'block';
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            
+            // Restore last module if returning user
+            const savedProgress = JSON.parse(localStorage.getItem('trainingProgress'));
+            if (savedProgress && savedProgress.currentModule) {
+                // Stay on overview for new session
+                console.log('Welcome back! Your progress has been saved.');
+            }
+        });
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight') {
+                const currentModule = document.querySelector('.module.active').id;
+                const modules = ['overview', 'module1', 'module2', 'module3', 'module4', 'module5', 'resources'];
+                const currentIndex = modules.indexOf(currentModule);
+                if (currentIndex < modules.length - 1) {
+                    showModule(modules[currentIndex + 1]);
+                }
+            } else if (e.key === 'ArrowLeft') {
+                const currentModule = document.querySelector('.module.active').id;
+                const modules = ['overview', 'module1', 'module2', 'module3', 'module4', 'module5', 'resources'];
+                const currentIndex = modules.indexOf(currentModule);
+                if (currentIndex > 0) {
+                    showModule(modules[currentIndex - 1]);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
